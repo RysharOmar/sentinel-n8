@@ -1,1 +1,9 @@
-
+curl -X POST http://localhost:5678/webhook/threat-intel \
+  -H "Content-Type: application/json" \
+  -d '{
+    "indicators": [
+      {"type": "ip", "value": "185.220.101.34"},
+      {"type": "domain", "value": "malware.example.com"},
+      {"type": "hash", "value": "a1b2c3d4e5f6..."}
+    ]
+  }'
