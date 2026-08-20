@@ -1,1 +1,16 @@
+# Importar
+# workflows/incident-response-ai.json
 
+# Funciona con webhooks. Envía alertas así:
+curl -X POST http://localhost:5678/webhook/incident-response \
+  -H "Content-Type: application/json" \
+  -d '{
+    "alert_id": "ALR-2024-0891",
+    "severity": "high",
+    "source": "siem",
+    "title": "Multiple failed SSH logins from 185.220.101.34",
+    "description": "47 failed login attempts in 5 minutes",
+    "raw_logs": "Aug 15 14:23:01 server sshd[1234]: Failed password for root from 185.220.101.34 port 43210 ssh2\nAug 15 14:23:03 server sshd[1234]: Failed password for root from 185.220.101.34 port 43211 ssh2",
+    "affected_assets": ["srv-prod-01", "srv-prod-02"],
+    "tags": ["brute-force", "ssh", "external"]
+  }'
