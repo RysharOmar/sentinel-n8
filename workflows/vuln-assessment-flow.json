@@ -1,1 +1,11 @@
-
+curl -X POST http://localhost:5678/webhook/vuln-assessment \
+  -H "Content-Type: application/json" \
+  -d '{
+    "scan_id": "SCAN-2024-0456",
+    "tool": "trivy",
+    "target": "registry.tuempresa.com/app:latest",
+    "raw_findings": [
+      {"cve": "CVE-2024-3094", "severity": "CRITICAL", "package": "xz-utils", "version": "5.6.0"},
+      {"cve": "CVE-2024-27198", "severity": "CRITICAL", "package": "jetbrains", "version": "2024.1"}
+    ]
+  }'
